@@ -1,10 +1,10 @@
 import React from 'react';
-import ToDoForm from '../ToDo/ToDoForm';
+import ToDoForm from '../To-do/ToDoForm';
 
 const Home = () => {
     return (
         <div>
-            <ToDoForm></ToDoForm>
+            {/* <ToDoForm></ToDoForm> */}
         </div>
     );
 };
