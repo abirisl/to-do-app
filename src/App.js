@@ -19,7 +19,7 @@ function App() {
         <Route path='calendar' element={<Calender></Calender>}></Route>
         <Route path='complete' element={<CompleteTask></CompleteTask>}></Route>
       </Routes>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   );
 }
