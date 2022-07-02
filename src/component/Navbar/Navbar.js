@@ -4,9 +4,8 @@ import logo from '../../assest/to-do.png.png'
 
 const Navbar = () => {
     const menuItems = <>
-    <li><Link to="/home">Home</Link></li>
     <li><Link to="/complete">Completed Task</Link></li>
-    <li><Link to="/todo">To Do</Link></li>
+    <li><Link to="/todos">To Do</Link></li>
     <li><Link to="/calendar">Calendar</Link></li>
    
   </>

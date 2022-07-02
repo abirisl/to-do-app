@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { AiOutlineEdit} from 'react-icons/ai';
+import { AiFillDelete} from 'react-icons/ai';
+import useTodo from '../../hooks/useTodo';
 
 const TodoTask = () => {
-    const [todos, setTodos] = useState([]);
+    const [todos,setTodos] = useTodo([]);
 
-    useEffect(() => {
-        fetch('task.json')
-            .then(res => res.json())
-            .then(data => setTodos(data))
-    }, [])
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure');
+        if (proceed) {
+            const url = `http://localhost:5000/todos/${id}`;
+            console.log(url)
+            fetch(url, {
+                method: 'DELETE'
+            })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.deletedCount > 0) {
+                const remaining = todos.filter((todo) => todo._id !== id);
+                setTodos(remaining);
+              }
+            });
+
+        }
+    }
 
     return (
         <div class="mt-5 overflow-x-auto w-full">
@@ -34,8 +50,14 @@ const TodoTask = () => {
                                         <input type="checkbox" class="checkbox" />
                                     </label>
                                 </th>
+                                <th> 
+                                    <h1>{todo.name}</h1>
+                                </th>
                                 <th>
-                                    <h1>{todo.title}</h1>
+                                   <button> < AiOutlineEdit/></button>
+                                </th>
+                                <th>
+                                    <button className='w-100' onClick={() => handleDelete(todos._id)}><AiFillDelete/></button>
                                 </th>
                             </tr>
                         </tbody>
